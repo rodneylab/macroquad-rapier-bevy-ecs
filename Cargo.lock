@@ -1238,9 +1238,9 @@ dependencies = [
 
 [[package]]
 name = "rapier2d"
-version = "0.19.0"
+version = "0.20.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "535b70552dc42dab9054d3d5a80e8430ced502e20acb0bf6118c344ff356f62a"
+checksum = "b406e79fca8206343d4e362d5bd6b7eb4c366e34c0ffcc3eb6469aabc3705503"
 dependencies = [
  "approx",
  "arrayvec",
@@ -1256,6 +1256,7 @@ dependencies = [
  "parry2d",
  "rustc-hash",
  "simba",
+ "thiserror",
  "vec_map",
 ]
 
