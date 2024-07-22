@@ -48,7 +48,7 @@ unit! {
 fn conf() -> Conf {
     #[allow(clippy::cast_possible_truncation)]
     Conf {
-        window_title: String::from("Macroquad Rapier Bubbles with Units of Measurement"),
+        window_title: String::from("Macroquad Rapier Bubbles Bevy ECS"),
         window_width: WINDOW_WIDTH as i32,
         window_height: WINDOW_HEIGHT as i32,
         high_dpi: true,
