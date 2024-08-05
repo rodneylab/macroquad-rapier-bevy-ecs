@@ -9,7 +9,7 @@ rust7version = "1.78"
 description = "Macroquad Rapier ECS 🦀 Rust game dev — using bevy's 🧩 Entity Component System in a Macroquad game with Rapier physics."
 
 [dependencies]
-bevy_ecs = "0.14.0"
+bevy_ecs = "0.14.1"
 crossbeam = "0.8.4"
 egui = "0.21.0"
 egui-macroquad = "0.15"
