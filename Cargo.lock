@@ -446,7 +446,7 @@ checksum = "04684094ab441cee64e836dac5d07b822c0dd002739a9790023f9d2d08ce2875"
 dependencies = [
  "egui",
  "egui-miniquad",
- "macroquad",
+ "macroquad 0.3.26",
 ]
 
 [[package]]
@@ -459,7 +459,7 @@ dependencies = [
  "copypasta",
  "egui",
  "getrandom",
- "miniquad",
+ "miniquad 0.3.16",
  "quad-rand",
  "quad-url",
 ]
@@ -613,6 +613,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "518faa5064866338b013ff9b2350dc318e14cc4fcd6cb8206d7e7c9886c98815"
 
 [[package]]
+name = "glam"
+version = "0.27.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9e05e7e6723e3455f4818c7b26e855439f7546cf617ef669d1adedb8669e5cb9"
+
+[[package]]
 name = "hashbrown"
 version = "0.13.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -739,12 +745,28 @@ checksum = "b92608a005ca1f16fe4e78c85a1cb18481898ac1347c71ae3398a6795c493c15"
 dependencies = [
  "bumpalo",
  "fontdue",
- "glam",
+ "glam 0.21.3",
  "image",
  "macroquad_macro",
- "miniquad",
+ "miniquad 0.3.16",
  "quad-rand",
  "quad-snd",
+]
+
+[[package]]
+name = "macroquad"
+version = "0.4.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5696b43e0970e597ae209aa6b247a272c92fac74508570a990586487cfebd997"
+dependencies = [
+ "bumpalo",
+ "fontdue",
+ "glam 0.27.0",
+ "image",
+ "macroquad_macro",
+ "miniquad 0.4.5",
+ "quad-rand",
+ "slotmap",
 ]
 
 [[package]]
@@ -755,7 +777,7 @@ dependencies = [
  "crossbeam",
  "egui",
  "egui-macroquad",
- "macroquad",
+ "macroquad 0.4.11",
  "rand",
  "rand_distr",
  "rapier2d",
@@ -822,6 +844,18 @@ name = "miniquad"
 version = "0.3.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c1251d63dfea7109063b2cec354253e8bf150e7878837a6ac0f9185d6a2518b6"
+dependencies = [
+ "libc",
+ "ndk-sys",
+ "objc",
+ "winapi",
+]
+
+[[package]]
+name = "miniquad"
+version = "0.4.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0fc9c33a02870e728cf798dc0a69f29039f96ba13e46cde0f91d4b364eeb17a1"
 dependencies = [
  "libc",
  "ndk-sys",
@@ -1341,6 +1375,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f92a496fb766b417c996b9c5e57daf2f7ad3b0bebe1ccfca4856390e3d3bb67"
 dependencies = [
  "autocfg",
+]
+
+[[package]]
+name = "slotmap"
+version = "1.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dbff4acf519f630b3a3ddcfaea6c06b42174d9a44bc70c620e9ed1649d58b82a"
+dependencies = [
+ "version_check",
 ]
 
 [[package]]
