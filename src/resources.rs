@@ -1,13 +1,13 @@
-use bevy_ecs::system::Resource;
+use bevy_ecs::resource::Resource;
 use crossbeam::channel::Receiver;
-use rand::{rngs::StdRng, SeedableRng};
+use rand::{SeedableRng, rngs::StdRng};
 use rapier2d::{
     dynamics::{
         CCDSolver, ImpulseJointSet, IntegrationParameters, IslandManager, MultibodyJointSet,
         RigidBodySet,
     },
     geometry::{BroadPhaseMultiSap, ColliderSet, CollisionEvent, NarrowPhase},
-    na::{vector, Vector2},
+    na::{Vector2, vector},
     pipeline::{ChannelEventCollector, PhysicsPipeline, QueryPipeline},
     prelude::nalgebra,
 };
@@ -30,7 +30,7 @@ pub struct NormalDistribution(pub StdRng);
 
 impl Default for NormalDistribution {
     fn default() -> Self {
-        NormalDistribution(StdRng::from_entropy())
+        NormalDistribution(StdRng::from_os_rng())
     }
 }
 

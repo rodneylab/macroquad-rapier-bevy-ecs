@@ -1,7 +1,7 @@
 use crate::component::{CircleCollider, CircleMesh, CuboidCollider, Position, Sensor, Velocity};
 use crate::resources::{NormalDistribution, PhysicsEngine, SimulationMode, SimulationState};
+use crate::{BALL_RADIUS, WINDOW_HEIGHT, WINDOW_WIDTH, pixel};
 use crate::{colours::BALL_COLOURS, component::HeightFieldCollider};
-use crate::{pixel, BALL_RADIUS, WINDOW_HEIGHT, WINDOW_WIDTH};
 use bevy_ecs::{
     query::{With, Without},
     system::{Commands, Query, Res, ResMut},
@@ -10,13 +10,13 @@ use macroquad::{
     rand::{self as macroquad_rand},
     shapes::draw_circle,
 };
-use rand::{rngs::StdRng, Rng};
-use rand_distr::Standard;
+use rand::{Rng, rngs::StdRng};
+use rand_distr::StandardNormal;
 use rapier2d::{
     dynamics::RigidBodyBuilder,
     geometry::{ColliderBuilder, CollisionEvent, CollisionEventFlags},
     math::Isometry,
-    na::{vector, DVector, Isometry2, Vector2},
+    na::{DVector, Isometry2, Vector2, vector},
     pipeline::ActiveEvents,
     prelude::nalgebra,
 };
@@ -27,7 +27,7 @@ use uom::si::{
 
 pub fn get_random_ball_velocity(normal_distribution: &mut StdRng) -> Vector2<VelocityUnit> {
     // Standard generates values in the [0,1) range
-    let pseudo_random_value: f32 = normal_distribution.sample(Standard);
+    let pseudo_random_value: f32 = normal_distribution.sample(StandardNormal);
     let x_velocity: VelocityUnit =
         VelocityUnit::new::<velocity::meter_per_second>((2.0 * pseudo_random_value) - 1.0);
     let y_velocity: VelocityUnit = VelocityUnit::new::<velocity::meter_per_second>(1.0);
@@ -39,8 +39,8 @@ pub fn create_ball_physics_system(
     physics_engine: ResMut<PhysicsEngine>,
 ) {
     let PhysicsEngine {
-        ref mut collider_set,
-        ref mut rigid_body_set,
+        collider_set,
+        rigid_body_set,
         ..
     } = physics_engine.into_inner();
     for (position, velocity, mut circle_collider) in &mut query {
@@ -155,7 +155,7 @@ pub fn spawn_fixed_colliders_system(mut commands: Commands) {
         scale: vector![ceiling_width.value, collider_half_thickness.value],
         translation: vector![
             0.5 * window_width.get::<length::meter>(),
-            -1.0 * collider_half_thickness.value
+            -collider_half_thickness.value
         ],
     });
 
@@ -259,7 +259,7 @@ pub fn end_simulation_system(
         ) = collision_event
         {
             simulation_state.mode = SimulationMode::Paused;
-        };
+        }
     }
 }
 
