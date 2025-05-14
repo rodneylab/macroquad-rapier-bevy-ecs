@@ -1,7 +1,7 @@
 use crate::component::{CircleCollider, CircleMesh, CuboidCollider, Position, Sensor, Velocity};
 use crate::resources::{NormalDistribution, PhysicsEngine, SimulationMode, SimulationState};
+use crate::{BALL_RADIUS, WINDOW_HEIGHT, WINDOW_WIDTH, pixel};
 use crate::{colours::BALL_COLOURS, component::HeightFieldCollider};
-use crate::{pixel, BALL_RADIUS, WINDOW_HEIGHT, WINDOW_WIDTH};
 use bevy_ecs::{
     query::{With, Without},
     system::{Commands, Query, Res, ResMut},
@@ -10,13 +10,13 @@ use macroquad::{
     rand::{self as macroquad_rand},
     shapes::draw_circle,
 };
-use rand::{rngs::StdRng, Rng};
+use rand::{Rng, rngs::StdRng};
 use rand_distr::StandardNormal;
 use rapier2d::{
     dynamics::RigidBodyBuilder,
     geometry::{ColliderBuilder, CollisionEvent, CollisionEventFlags},
     math::Isometry,
-    na::{vector, DVector, Isometry2, Vector2},
+    na::{DVector, Isometry2, Vector2, vector},
     pipeline::ActiveEvents,
     prelude::nalgebra,
 };
@@ -39,8 +39,8 @@ pub fn create_ball_physics_system(
     physics_engine: ResMut<PhysicsEngine>,
 ) {
     let PhysicsEngine {
-        ref mut collider_set,
-        ref mut rigid_body_set,
+        collider_set,
+        rigid_body_set,
         ..
     } = physics_engine.into_inner();
     for (position, velocity, mut circle_collider) in &mut query {

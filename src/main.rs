@@ -12,10 +12,10 @@ use bevy_ecs::{
 };
 use component::{CircleCollider, CircleMesh, Position, Velocity};
 use macroquad::{
-    input::{is_key_released, KeyCode},
+    input::{KeyCode, is_key_released},
     miniquad::date,
     rand::{self as macroquad_rand, srand},
-    window::{clear_background, next_frame, Conf},
+    window::{Conf, clear_background, next_frame},
 };
 use rapier2d::{na::vector, prelude::nalgebra};
 use resources::{NormalDistribution, PhysicsEngine, SimulationMode, SimulationState};
