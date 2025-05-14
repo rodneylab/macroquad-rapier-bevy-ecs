@@ -7,7 +7,7 @@ mod systems;
 
 use crate::colours::{BALL_COLOURS, GUNMETAL};
 use bevy_ecs::{
-    schedule::{IntoSystemConfigs, IntoSystemSetConfigs, Schedule, SystemSet},
+    schedule::{IntoScheduleConfigs, Schedule, SystemSet},
     world::World,
 };
 use component::{CircleCollider, CircleMesh, Position, Velocity};

@@ -1,4 +1,4 @@
-use bevy_ecs::system::Resource;
+use bevy_ecs::resource::Resource;
 use crossbeam::channel::Receiver;
 use rand::{rngs::StdRng, SeedableRng};
 use rapier2d::{
@@ -30,7 +30,7 @@ pub struct NormalDistribution(pub StdRng);
 
 impl Default for NormalDistribution {
     fn default() -> Self {
-        NormalDistribution(StdRng::from_entropy())
+        NormalDistribution(StdRng::from_os_rng())
     }
 }
 

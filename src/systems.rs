@@ -11,7 +11,7 @@ use macroquad::{
     shapes::draw_circle,
 };
 use rand::{rngs::StdRng, Rng};
-use rand_distr::Standard;
+use rand_distr::StandardNormal;
 use rapier2d::{
     dynamics::RigidBodyBuilder,
     geometry::{ColliderBuilder, CollisionEvent, CollisionEventFlags},
@@ -27,7 +27,7 @@ use uom::si::{
 
 pub fn get_random_ball_velocity(normal_distribution: &mut StdRng) -> Vector2<VelocityUnit> {
     // Standard generates values in the [0,1) range
-    let pseudo_random_value: f32 = normal_distribution.sample(Standard);
+    let pseudo_random_value: f32 = normal_distribution.sample(StandardNormal);
     let x_velocity: VelocityUnit =
         VelocityUnit::new::<velocity::meter_per_second>((2.0 * pseudo_random_value) - 1.0);
     let y_velocity: VelocityUnit = VelocityUnit::new::<velocity::meter_per_second>(1.0);
@@ -155,7 +155,7 @@ pub fn spawn_fixed_colliders_system(mut commands: Commands) {
         scale: vector![ceiling_width.value, collider_half_thickness.value],
         translation: vector![
             0.5 * window_width.get::<length::meter>(),
-            -1.0 * collider_half_thickness.value
+            -collider_half_thickness.value
         ],
     });
 
@@ -259,7 +259,7 @@ pub fn end_simulation_system(
         ) = collision_event
         {
             simulation_state.mode = SimulationMode::Paused;
-        };
+        }
     }
 }
 
