@@ -17,4 +17,4 @@ macroquad = { version = "0.3.26", default-features = false }
 rand = "0.9.1"
 rand_distr = "0.5.1"
 rapier2d = { version = "0.25.1", features = ["simd-stable"] }
-uom = "0.36.0"
+uom = "0.37.0"
