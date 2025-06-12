@@ -13,7 +13,7 @@ bevy_ecs = "0.16.1"
 crossbeam = "0.8.4"
 # egui = "0.21.0"
 # egui-macroquad = "0.15.0"
-macroquad = { version = "0.3.26", default-features = false }
+macroquad = { version = "0.4.14", default-features = false }
 rand = "0.9.1"
 rand_distr = "0.5.1"
 rapier2d = { version = "0.26.1", features = ["simd-stable"] }
